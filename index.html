@@ -1502,10 +1502,11 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
 <div id="khboot" style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#eef1ff;font-family:system-ui,Tahoma,sans-serif;color:#1c2350">
   <div style="width:84px;height:84px;border-radius:26px;background:#ffc83d;border:4px solid #24214f;box-shadow:0 6px 0 #24214f;display:flex;align-items:center;justify-content:center"><div style="width:0;height:0;border-top:18px solid transparent;border-bottom:18px solid transparent;border-left:28px solid #24214f;margin-left:8px"></div></div>
   <b id="khbootmsg" style="font-size:18px">جارٍ التحميل…</b><button id="khretry" hidden style="font:inherit;font-weight:700;padding:10px 22px;border-radius:999px;border:3px solid #24214f;background:#fff;cursor:pointer">إعادة المحاولة</button></div>
+<script src="config.js"></script>
 <script>
 /* ================= نسخة GitHub Pages =================
    الواجهة هنا، والبيانات في Google Apps Script. ضع رابط «تطبيق الويب» (ينتهي بـ /exec) في KH_API */
-window.KH_API = "https://script.google.com/macros/s/AKfycbz0ppZbXW_kJ5S_P3iYxfr1KkI5Cl64SmeoIqIfyuwButhGphJDptOksUOwlhlq-uLZmA/exec";
+window.KH_API = window.KH_API || "https://script.google.com/macros/s/AKfycbz0ppZbXW_kJ5S_P3iYxfr1KkI5Cl64SmeoIqIfyuwButhGphJDptOksUOwlhlq-uLZmA/exec";   // يُقرأ من config.js إن وُجد
 window.KH_GH = true;
 (function () {
   function api(fn, args) {
