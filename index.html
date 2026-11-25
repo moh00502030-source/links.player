@@ -1082,6 +1082,52 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
 </style>
 <style id="vp-30">body.kiosk #instbtn { display: none !important; } #instacts .btn { min-height: 46px; }</style>
 <style id="vp-31">body:not(.kid) #kuibtn { display: none !important; }</style>
+<style id="vp-wb2">
+  .wbdlg { max-width: 900px; } .wbdlg .pane { display: flex; flex-direction: column; gap: 12px; }
+  .wbsec { border: 1px solid var(--line); border-radius: 18px; background: var(--panel2); padding: 10px; }
+  .wbhead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .wbhead b { font-size: 16px; } .wbhead input { flex: 1; min-width: 150px; min-height: 40px; } .wbcnt { display: inline-block; min-width: 24px; text-align: center; padding: 0 8px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 13px; }
+  .wblist { max-height: min(42vh, 380px); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 6px; padding: 2px 4px 2px 2px; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+  .wblist::-webkit-scrollbar { width: 10px; } .wblist::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 8px; border: 2px solid var(--panel2); }
+  .wbitem { display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 14px; background: var(--panel); border: 2px solid transparent; }
+  .wbitem.sel { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .wbitem .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--panel2); display: flex; align-items: center; justify-content: center; font-size: 26px; }
+  .wbitem .tx { min-width: 0; } .wbitem .tx b { display: block; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .wbitem .tx small { display: block; color: var(--muted); direction: ltr; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; }
+  .wbitem .tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 3px; } .wbitem .tags span { font-size: 11.5px; padding: 1px 8px; border-radius: 999px; background: var(--panel2); color: var(--muted); }
+  .wbitem .acts { display: flex; gap: 4px; } .wbitem .acts .btn { min-width: 40px; min-height: 40px; padding: 0 8px; font-size: 16px; }
+  .wbitem .acts .del:hover { background: #e5484d; color: #fff; }
+  .wbform { border: 2px solid var(--line); border-radius: 18px; padding: 12px 14px; background: var(--panel); }
+  .wbform.editing { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent); }
+  .wbfhead { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; } .wbfhead h3 { margin: 0; flex: 1; font-size: 18px; }
+  .wbfic { width: 40px; height: 40px; border-radius: 12px; background: var(--panel2); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .wbform fieldset { border: 0; margin: 14px 0 0; padding: 12px; min-width: 0; background: var(--panel2); border-radius: 14px; }
+  .wbform legend { font-weight: 800; font-size: 14px; color: var(--accent); padding: 0; float: right; width: 100%; margin-bottom: 8px; } .wbform legend + * { clear: both; }
+  .wbgrid2 { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; } .wbgrid2 .fld { margin: 0; }
+  .wbrowin { display: flex; gap: 6px; } .wbrowin input { flex: 1; min-width: 0; }
+  #wbmsg { min-height: 1.2em; font-weight: 700; margin-top: 4px; }
+  .wbicrow { display: flex; gap: 10px; align-items: flex-start; } #wbicon { width: 64px; height: 52px; text-align: center; font-size: 26px; flex: none; }
+  .wbicrow .icpick { margin: 0; max-height: 132px; overflow-y: auto; flex: 1; } .wbicrow .icpick button { width: 38px; height: 38px; font-size: 20px; }
+  .wbkids { display: flex; flex-wrap: wrap; gap: 6px; } .wbkids .ck { background: var(--panel2); border-radius: 999px; padding: 6px 12px; margin: 0; }
+  .wbsave { position: sticky; bottom: -12px; z-index: 2; background: var(--panel); padding: 10px 0 8px; margin-top: 12px; display: flex; gap: 8px; box-shadow: 0 -10px 14px -10px rgba(0,0,0,.25); } .wbsave .btn { flex: 1; min-height: 46px; font-size: 16px; }
+  .wbmore summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  @media (max-width: 640px) { .wbgrid2 { grid-template-columns: 1fr; } .wbitem { grid-template-columns: 38px 1fr auto; gap: 8px; padding: 8px; } .wbitem .acts { gap: 3px; } .wbitem .acts .btn { min-width: 34px; min-height: 34px; padding: 0 4px; font-size: 14px; } .wbitem .ic { width: 38px; height: 38px; font-size: 21px; } .wbitem .tags span:nth-child(n+3) { display: none; } }
+</style>
+<style id="vp-wbz">
+  #webov.zoom .wbar, #webov.zoom .wbpanel { display: none !important; }
+  #wbunzoom { position: absolute; top: 8px; left: 8px; z-index: 5; width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 20px; opacity: .55; background: rgba(0,0,0,.6) !important; color: #fff !important; border: 0 !important; }
+  #wbunzoom:hover, #wbunzoom:focus-visible { opacity: 1; } #wbunzoom[hidden] { display: none; }
+  #webov { position: fixed; } #webov.zoom #wbbody { flex: 1; }
+</style>
+<style id="vp-35">
+  .sk10 b { font-size: 13px; font-weight: 800; letter-spacing: -.3px; font-variant-numeric: tabular-nums; }
+  .sk10:disabled { opacity: .35; }
+  .seekwrap { touch-action: none; }
+  .seektip { position: absolute; bottom: calc(100% + 10px); transform: translateX(-50%); background: rgba(16,18,40,.92); color: #fff; padding: 5px 10px; border-radius: 10px;
+    font-size: 14px; font-weight: 800; white-space: nowrap; pointer-events: none; font-variant-numeric: tabular-nums; z-index: 5; direction: ltr; }
+  .seektip[hidden] { display: none; } .seektip small { display: block; font-size: 11px; font-weight: 600; opacity: .8; direction: rtl; text-align: center; }
+  #player.longclip #seek { height: 10px; } #player.longclip .seekrow { padding-block: 4px; }
+</style>
 </head>
 <body>
 
@@ -1203,7 +1249,7 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
         </div>
         <div class="row">
           <button id="prv" class="ib mkeep" aria-label="المقطع السابق"></button>
-          <button id="pp" class="ib mkeep" aria-label="تشغيل"></button>
+          <button id="b10" class="ib mkeep sk10" type="button" aria-label="رجوع 10 ثوانٍ" title="رجوع 10 ثوانٍ (←)"><b>−10</b></button><button id="pp" class="ib mkeep" aria-label="تشغيل"></button><button id="f10" class="ib mkeep sk10" type="button" aria-label="تقديم 10 ثوانٍ" title="تقديم 10 ثوانٍ (→)"><b>+10</b></button>
           <button id="nxt" class="ib mkeep" aria-label="المقطع التالي"></button>
           <button id="mute" class="ib" aria-label="كتم الصوت"></button>
           <input id="vol" type="range" min="0" max="1" step="0.01" value="1" aria-label="مستوى الصوت">
@@ -1444,22 +1490,37 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
 <div id="srcmodal" class="modal" hidden><div class="dlg wide"><div class="dh"><h2 id="srct">📂 مصادر درايف</h2><button id="srcx" class="ib" aria-label="إغلاق"></button></div>
   <div class="pane" id="srcpane"></div></div></div>
 <div id="webov" hidden><div class="wbar">
-  <button id="wbexit" class="btn" type="button">✖ خروج</button><button id="wbback" class="btn" type="button">‹ رجوع</button><button id="wbhome" class="btn" type="button" title="الصفحة الرئيسية للموقع">🏠</button><button id="wbrel" class="btn" type="button" title="تحديث الصفحة">🔄</button><button id="wbkey" class="btn" type="button" title="الحافظة: اسم المستخدم وكلمة المرور" hidden>🔑 الحافظة</button><button id="wbkb" class="btn" type="button" title="لوحة المفاتيح" aria-label="لوحة المفاتيح"><svg class="kbi" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 9h1M10 9h1M14 9h1M18 9h0.01M6 12.5h1M10 12.5h1M14 12.5h1M18 12.5h0.01M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>لوحة المفاتيح</span></button><button id="wbfs" class="btn" type="button" title="ملء الشاشة" hidden>⛶ ملء الشاشة</button><button id="wbfullp" class="btn" type="button" title="بعض الفيديوهات (مثل دروس مدرسة) لا تعمل والمشغل داخل صفحة Google Sites. افتح المشغل بصفحة كاملة لتعمل" hidden>↗️ صفحة كاملة</button>
-  <b id="wbt"></b><span id="wbrem"></span></div><div id="wbvault" class="wbpanel" hidden></div><div id="wbkbp" class="wbpanel" hidden><div class="wbtxtrow"><input id="wbtxt" type="text" dir="auto" inputmode="none" autocomplete="off" placeholder="اكتب هنا..."><button id="wbtcp" class="btn" type="button">📋 نسخ</button><button id="wbtclr" class="btn" type="button">✖</button></div><small id="wbkbt" class="hint"></small><div id="wbkbk"></div></div><div id="wbbody"></div></div>
-<div id="wbmodal" class="modal" hidden><div class="dlg wide"><div class="dh"><h2>🌐 مواقع للتصفح الآمن</h2><button id="wbx" class="ib" aria-label="إغلاق"></button></div><div class="pane">
-  <div class="hint" style="line-height:1.9">أضف رابط موقع ليظهر للتابع زرّ يفتحه داخل المشغل. لا تعمل إلا روابط نفس الموقع، ولا تُفتح أي نافذة خارجه. يُحتسب وقت التصفح من مدة المشاهدة.</div>
-  <div id="wblist"></div>
-  <div class="df" style="margin:8px 0 0"><button id="wbdiag" class="btn" type="button">🔍 معلومات التشخيص لهذا الجهاز</button></div><pre id="wbdiagout" hidden style="white-space:pre-wrap;direction:ltr;text-align:left;font-size:12px;background:var(--panel2);padding:10px;border-radius:10px;user-select:text;-webkit-user-select:text"></pre>
-  <h3 id="wbft" style="margin:16px 0 6px">إضافة موقع</h3>
-  <div class="fld"><label for="wbname">الاسم الذي يظهر للطفل</label><input id="wbname" type="text" maxlength="60" placeholder="مثال: مدرسة"></div>
-  <div class="fld"><label for="wburl">رابط الصفحة</label><div class="df" style="margin:0"><input id="wburl" type="url" dir="ltr" placeholder="https://..." style="flex:1"><button id="wbprobe" class="btn" type="button">🔎 فحص الموقع</button></div></div>
-  <div class="hint" id="wbmsg" style="min-height:1.2em;font-weight:700"></div>
-  <div class="fld"><label for="wbmode">طريقة العرض</label><select id="wbmode"><option value="frame">إطار محمي (الموقع كاملاً: ألعاب وصور وفيديو، ولا يُسمح بالخروج منه)</option><option value="framec">إطار متوافق (مثل مدرسة: لفيديوهات يوتيوب التي لا تعمل على فايرفوكس الجوال)</option><option value="proxy">تصفح آمن (للمواقع التي تمنع الإطار: صفحات بلا أكواد)</option></select></div>
-  <div class="fld"><label for="wbscope">الصفحات المسموحة فقط (اختياري: اتركها فارغة للسماح بكل الموقع)</label><textarea id="wbscope" rows="3" dir="ltr" placeholder="https://site.org/stories/*&#10;https://site.org/page.html" style="width:100%;font:inherit;padding:8px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text)"></textarea><div class="df" style="margin:6px 0 0"><button id="wbsc1" class="btn" type="button">📄 هذه الصفحة فقط</button><button id="wbsc2" class="btn" type="button">📂 هذه الصفحة وما تحتها</button><button id="wbsc0" class="btn" type="button">🌐 كل الموقع</button></div><div class="hint" style="line-height:1.8">سطر لكل رابط. الرابط وحده = تلك الصفحة فقط، والرابط المنتهي بـ <b dir="ltr">*</b> = الصفحة وكل الصفحات تحتها. الروابط الأخرى تظهر باهتة ولا تُفتح.</div><div class="hint" id="wbscw" style="color:#b45309;font-weight:700" hidden>ℹ️ في «الإطار المحمي» يمنع المتصفح فتح أي صفحة غير مسموحة. لكن المواقع التي تغيّر صفحاتها من داخلها دون إعادة تحميل (مثل مدرسة) قد تعرض أقساماً أخرى رغم ذلك.</div></div>
-  <div class="fld"><label for="wbicon">أيقونة</label><input id="wbicon" type="text" maxlength="4" value="🌐" style="width:80px;text-align:center"><div id="wbicons" class="icpick"></div></div>
-  <div class="fld"><label>التابعون (اتركها كلها فارغة ليظهر لكل التابعين)</label><div id="wbkids" class="ckl"></div></div>
-  <div class="df"><button id="wbsave" class="btn primary" type="button">حفظ</button><button id="wbnew" class="btn" type="button">جديد</button></div>
-  <div id="wbcw" class="wbcl" hidden><b>🔑 حافظة كلمات المرور لهذا الموقع</b><div class="hint" style="line-height:1.8">احفظ اسم المستخدم وكلمة المرور لكل تابع (أو لكل التابعين). يفتح الطفل «🔑 الحافظة» من أعلى الموقع ليكتبها أو ينسخها. تُحفظ في إعدادات السكربت ولا تظهر في الشيت.</div><div id="wbclist"></div><div class="row"><select id="wbckid"></select><input id="wbcu" type="text" dir="ltr" autocomplete="off" placeholder="اسم المستخدم"><input id="wbcp" type="password" dir="ltr" autocomplete="new-password" placeholder="كلمة المرور"><button id="wbcsave" class="btn primary" type="button">💾 حفظ</button></div></div>
+  <button id="wbexit" class="btn" type="button">✖ خروج</button><button id="wbback" class="btn" type="button">‹ رجوع</button><button id="wbhome" class="btn" type="button" title="الصفحة الرئيسية للموقع">🏠</button><button id="wbrel" class="btn" type="button" title="تحديث الصفحة">🔄</button><button id="wbkey" class="btn" type="button" title="الحافظة: اسم المستخدم وكلمة المرور" hidden>🔑 الحافظة</button><button id="wbzoom" class="btn" type="button" title="تكبير الموقع لكامل الشاشة (إخفاء الشريط)">⤢ تكبير</button><button id="wbkb" class="btn" type="button" title="لوحة المفاتيح" aria-label="لوحة المفاتيح"><svg class="kbi" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 9h1M10 9h1M14 9h1M18 9h0.01M6 12.5h1M10 12.5h1M14 12.5h1M18 12.5h0.01M8 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>لوحة المفاتيح</span></button><button id="wbfs" class="btn" type="button" title="ملء الشاشة" hidden>⛶ ملء الشاشة</button><button id="wbfullp" class="btn" type="button" title="بعض الفيديوهات (مثل دروس مدرسة) لا تعمل والمشغل داخل صفحة Google Sites. افتح المشغل بصفحة كاملة لتعمل" hidden>↗️ صفحة كاملة</button>
+  <b id="wbt"></b><span id="wbrem"></span></div><div id="wbvault" class="wbpanel" hidden></div><div id="wbkbp" class="wbpanel" hidden><div class="wbtxtrow"><input id="wbtxt" type="text" dir="auto" inputmode="none" autocomplete="off" placeholder="اكتب هنا..."><button id="wbtcp" class="btn" type="button">📋 نسخ</button><button id="wbtclr" class="btn" type="button">✖</button></div><small id="wbkbt" class="hint"></small><div id="wbkbk"></div></div><div id="wbbody"></div><button id="wbunzoom" class="btn" type="button" title="إظهار الشريط" hidden>⤡</button></div>
+<div id="wbmodal" class="modal" hidden><div class="dlg wide wbdlg"><div class="dh"><h2>🌐 مواقع للتصفح الآمن</h2><button id="wbx" class="ib" aria-label="إغلاق"></button></div><div class="pane">
+  <div class="hint">يظهر كل موقع للتابع كبطاقة يفتحها داخل المشغل فقط، ويُحتسب وقته من مدة المشاهدة.</div>
+  <section class="wbsec">
+    <div class="wbhead"><b>المواقع المضافة <span id="wbcount" class="wbcnt">0</span></b><input id="wbq" type="search" placeholder="🔎 ابحث بالاسم أو الرابط" aria-label="بحث في المواقع"><button id="wbnew" class="btn primary" type="button">➕ موقع جديد</button></div>
+    <div id="wblist" class="wblist" tabindex="0"></div>
+  </section>
+  <section id="wbformcard" class="wbform">
+    <div class="wbfhead"><span id="wbfic" class="wbfic">➕</span><h3 id="wbft">إضافة موقع جديد</h3><button id="wbcancel" class="btn" type="button" hidden>إلغاء التعديل</button></div>
+    <fieldset><legend>الموقع</legend>
+      <div class="wbgrid2">
+        <div class="fld"><label for="wbname">الاسم الذي يظهر للطفل</label><input id="wbname" type="text" maxlength="60" placeholder="مثال: مدرسة"></div>
+        <div class="fld"><label for="wburl">رابط الصفحة</label><div class="wbrowin"><input id="wburl" type="url" dir="ltr" placeholder="https://..."><button id="wbprobe" class="btn" type="button">🔎 فحص</button></div></div>
+      </div>
+      <div class="hint" id="wbmsg"></div>
+    </fieldset>
+    <fieldset><legend>طريقة العرض والصفحات</legend>
+      <div class="fld"><label for="wbmode">طريقة العرض</label><select id="wbmode"><option value="frame">إطار محمي (الموقع كاملاً: ألعاب وصور وفيديو، ولا يُسمح بالخروج منه)</option><option value="framec">إطار متوافق (مثل مدرسة: لفيديوهات يوتيوب التي لا تعمل على فايرفوكس الجوال)</option><option value="proxy">تصفح آمن (للمواقع التي تمنع الإطار: صفحات بلا أكواد)</option></select></div>
+      <div class="fld"><label for="wbscope">الصفحات المسموحة فقط (اختياري: اتركها فارغة للسماح بكل الموقع)</label><textarea id="wbscope" rows="3" dir="ltr" placeholder="https://site.org/stories/*&#10;https://site.org/page.html" style="width:100%;font:inherit;padding:8px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text)"></textarea><div class="df" style="margin:6px 0 0"><button id="wbsc1" class="btn" type="button">📄 هذه الصفحة فقط</button><button id="wbsc2" class="btn" type="button">📂 هذه الصفحة وما تحتها</button><button id="wbsc0" class="btn" type="button">🌐 كل الموقع</button></div><div class="hint" style="line-height:1.8">سطر لكل رابط. الرابط وحده = تلك الصفحة فقط، والرابط المنتهي بـ <b dir="ltr">*</b> = الصفحة وكل الصفحات تحتها. الروابط الأخرى تظهر باهتة ولا تُفتح.</div><div class="hint" id="wbscw" style="color:#b45309;font-weight:700" hidden>ℹ️ في «الإطار المحمي» يمنع المتصفح فتح أي صفحة غير مسموحة. لكن المواقع التي تغيّر صفحاتها من داخلها دون إعادة تحميل (مثل مدرسة) قد تعرض أقساماً أخرى رغم ذلك.</div></div>
+    </fieldset>
+    <fieldset><legend>الأيقونة</legend>
+      <div class="wbicrow"><input id="wbicon" type="text" maxlength="4" value="🌐" aria-label="الأيقونة"><div id="wbicons" class="icpick"></div></div>
+    </fieldset>
+    <fieldset><legend>من يرى هذا الموقع</legend>
+      <div class="hint">اترك الكل بلا تحديد ليظهر لكل التابعين.</div><div id="wbkids" class="wbkids"></div>
+    </fieldset>
+    <div class="wbsave"><button id="wbsave" class="btn primary" type="button">💾 حفظ الموقع</button></div>
+    <div id="wbcw" class="wbcl" hidden><b>🔑 حافظة كلمات المرور لهذا الموقع</b><div class="hint" style="line-height:1.8">احفظ اسم المستخدم وكلمة المرور لكل تابع (أو لكل التابعين). يفتح الطفل «🔑 الحافظة» من أعلى الموقع ليكتبها أو ينسخها. تُحفظ في إعدادات السكربت ولا تظهر في الشيت.</div><div id="wbclist"></div><div class="row"><select id="wbckid"></select><input id="wbcu" type="text" dir="ltr" autocomplete="off" placeholder="اسم المستخدم"><input id="wbcp" type="password" dir="ltr" autocomplete="new-password" placeholder="كلمة المرور"><button id="wbcsave" class="btn primary" type="button">💾 حفظ</button></div></div>
+  </section>
+  <details class="wbmore"><summary>أدوات</summary><div class="df" style="margin:8px 0 0"><button id="wbdiag" class="btn" type="button">🔍 معلومات التشخيص لهذا الجهاز</button></div><pre id="wbdiagout" hidden style="white-space:pre-wrap;direction:ltr;text-align:left;font-size:12px;background:var(--panel2);padding:10px;border-radius:10px;user-select:text;-webkit-user-select:text"></pre></details>
 </div></div></div>
 <div id="kcpmodal" class="modal" hidden><div class="dlg"><div class="dh"><h2>📋 نسخ حساب تابع</h2><button id="kcpx" class="ib" aria-label="إغلاق"></button></div><div class="pane">
   <div class="hint" id="kcpinfo" style="line-height:1.8"></div>
@@ -1663,7 +1724,7 @@ function setPlaying(p, real) {
 function setNative(on) {
   player.classList.toggle('native', on);
   if (on) { player.classList.remove('idle'); clearTimeout(idleT); }
-  [seek, pp, $('mute'), vol].forEach(e => e.disabled = on);
+  [seek, pp, $('mute'), vol, $('b10'), $('f10')].forEach(e => e.disabled = on);
   if (on) { $('tcur').textContent = '--:-- / --:--'; $('trem').textContent = ''; seek.value = 0; setP(seek, 0); }
 }
 let markKey = '';
@@ -1682,7 +1743,7 @@ function updateSeek(t, d) {
   if (!ok) { drawMarks(0); seek.disabled = true; seek.value = 0; setP(seek, 0);
     $('tcur').textContent = d === Infinity ? 'بث مباشر' : fmt(t) + ' / --:--'; $('trem').textContent = ''; return; }
   t = Math.min(Math.max(t, 0), d);
-  seek.disabled = false; seek.max = d; seek.value = t; setP(seek, t / d * 100); drawMarks(d);
+  seek.disabled = false; seek.max = d; seek.value = t; setP(seek, t / d * 100); drawMarks(d); player.classList.toggle('longclip', d > 600);
   $('tcur').textContent = fmt(t) + ' / ' + fmt(d); $('trem').textContent = '−' + fmt(d - t);
 }
 function updateCount() { const c = PL[i]; $('cnt').textContent = c ? (c.plays || 0) : 0; updLike(); }
@@ -1920,7 +1981,7 @@ function loadHtml5(url, at, tok, fallback, quiet) {
     try { v.onerror = null; v.removeAttribute('src'); v.load(); } catch (e) {}
     if (act === A) { act = v; relA(); }
     if (fallback) { if (!quiet) toast('تعذّر التشغيل المباشر، يُعرض بمشغل المصدر'); fallback(); }
-    else { showMsg('تعذّر تشغيل هذا المقطع'); if (i < PL.length - 1) setTimeout(() => { if (tok === loadTok) next(); }, 2500); }
+    else { showMsg('تعذّر تشغيل هذا المقطع' + (i < PL.length - 1 ? '\nاضغط «التالي» للمقطع التالي' : '')); }
   };
   v.onerror = fail;
   cur = { rate: r => { const m = M(); m.defaultPlaybackRate = r; m.playbackRate = r; }, cc: on => { for (const t of v.textTracks) t.mode = on ? 'showing' : 'hidden'; },
@@ -2256,7 +2317,7 @@ function ended() { progDone(); finishClip(); if (RPTON && replayOk()) return rep
 function countPlay() {
   if (counted || !PL[i]) return;
   counted = true; const c = PL[i];
-  if (MODE === 'kid') { if (!c.local) run('kidPlay', KID, c.name).catch(e => { if (/تكرار/.test(e.message)) { toast(e.message, true); showHome(); } }); return; }
+  if (MODE === 'kid') { if (!c.local) run('kidPlay', KID, c.name).then(n => { if (n) { c.plays = n; if (PL[i] === c) updateCount(); } }).catch(e => { if (/تكرار/.test(e.message)) { toast(e.message, true); showHome(); } }); return; }
   c.plays = (c.plays || 0) + 1; updateCount(); renderList();
   if (c.index) run('addPlay', c.name).then(n => { if (n) { c.plays = n; updateCount(); renderList(); } }).catch(() => {});
 }
@@ -4183,9 +4244,7 @@ function showEnd() {
   hideEnd(); setPlaying(false);
   const o = $('endov'), nx = nextIdx(), rok = replayOk(); o.hidden = false;
   $('endrep').hidden = !rok; $('endnext').hidden = nx < 0;
-  let n = 6; const tx = () => { $('endtx').textContent = nx >= 0 ? 'يبدأ المقطع التالي خلال ' + n + ' ثوانٍ' : (rok ? '' : 'لا يُسمح بتكرار هذا المقطع'); };
-  tx();
-  if (nx >= 0) endT = setInterval(() => { if (o.hidden) return clearInterval(endT); if (--n <= 0) { hideEnd(); go(nx); } else tx(); }, 1000);
+  $('endtx').textContent = nx >= 0 ? 'التالي: «' + PL[nx].name + '»' : (rok ? '' : 'لا يُسمح بتكرار هذا المقطع');   // لا ينتقل للتالي إلا بضغطة
   setTimeout(() => { const f = rok ? $('endrep') : nx >= 0 ? $('endnext') : $('endexit'); try { f.focus({ preventScroll: true }); } catch (e) {} }, 50);
 }
 $('endrep').onclick = () => { if (!replayOk()) return toast('لا يُسمح بتكرار هذا المقطع', true); replay(); };
@@ -4226,7 +4285,7 @@ function closeWeb(quiet) {
   if (!WEBON) { $('webov').hidden = true; return; }
   const pdf = WEBON.pdf;
   if (!quiet && !pdf && MODE === 'kid' && pend >= 5) beat();
-  WEBON = null; WEBH = []; WEBCUR = ''; WEBTOK++; wbPanelsReset(); $('wbbody').innerHTML = ''; $('webov').hidden = true;
+  WEBON = null; WEBH = []; WEBCUR = ''; WEBTOK++; wbPanelsReset(); $('webov').classList.remove('zoom'); $('wbunzoom').hidden = true; $('wbbody').innerHTML = ''; $('webov').hidden = true;
   if (pdf && !quiet) exitClip();
 }
 /** ملف PDF يُعرض في نفس عارض المواقع (ملء الشاشة بشريط علوي) */
@@ -4264,8 +4323,8 @@ const escA = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').repla
    (قد تكون خارج الموقع) يعود لبداية الموقع — مناسب للمواقع التي تتنقّل داخلها دون إعادة تحميل مثل مدرسة */
 function webFrameC() {
   const w = WEBON, f = document.createElement('iframe'); let loads = 0;
-  f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
-  f.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture'); f.setAttribute('allowfullscreen', ''); f.title = w.name;
+  f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation allow-orientation-lock allow-pointer-lock');
+  f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; screen-wake-lock; web-share'); f.setAttribute('allowfullscreen', ''); f.title = w.name;
   f.onload = () => { let blank = false; try { blank = f.contentWindow.location.href === 'about:blank'; } catch (e) {} if (blank) return; wbLoading(false);
     if (++loads > 1) { loads = 0; toast('يُسمح بتصفح «' + w.name + '» فقط 🙂', true); wbLoading(true); f.src = w.url; } };
   f.src = w.url; wbBody().innerHTML = ''; wbBody().append(f); wbLoading(true);
@@ -4273,10 +4332,10 @@ function webFrameC() {
 function webFrame() {
   if (WEBON && WEBON.mode === 'framec') return webFrameC();
   const w = WEBON, f = document.createElement('iframe');
-  f.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture'); f.setAttribute('allowfullscreen', ''); f.title = w.name;
+  f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; screen-wake-lock; web-share'); f.setAttribute('allowfullscreen', ''); f.title = w.name;
   f.srcdoc = '<!doctype html><html><head><meta charset="utf-8"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="' + escA(webCsp(w)) + '">' +
     '<style>html,body{margin:0;height:100%;overflow:hidden;background:#fff}iframe{border:0;width:100%;height:100%;display:block}</style></head><body>' +
-    '<iframe id="kh" sandbox="allow-scripts allow-same-origin allow-forms allow-presentation" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="no-referrer" src="' + escA(w.url) + '"></iframe></body></html>';
+    '<iframe id="kh" sandbox="allow-scripts allow-same-origin allow-forms allow-presentation allow-orientation-lock allow-pointer-lock" allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; screen-wake-lock; web-share" allowfullscreen referrerpolicy="no-referrer" src="' + escA(w.url) + '"></iframe></body></html>';
   let hooked = false, lastV = 0, vAt = 0; const LD = [], RS = [];
   const hook = () => { if (hooked) return; let d; try { d = f.contentDocument; } catch (e) { return; } if (!d || !d.getElementById('kh')) return; hooked = true;
     d.addEventListener('securitypolicyviolation', e => { if (!/frame-src|child-src/.test(e.effectiveDirective || e.violatedDirective || '')) return;
@@ -4370,26 +4429,38 @@ let WBL = [], WBEDIT = null, WBKIDS = new Set();
 function wbOpen() { $('wbmodal').hidden = false; wbForm(null); $('wblist').innerHTML = '<p class="hint">⏳</p>';
   Promise.all([run('webList'), run('getKids')]).then(([l, k]) => { WBL = l || []; KIDS = k || KIDS; wbDraw(); wbForm(null); }).catch(e => { $('wblist').textContent = e.message; }); }
 function wbDraw() {
-  const L = $('wblist'); L.innerHTML = ''; if (!WBL.length) { L.append(E('p', 'hint', 'لا توجد مواقع بعد.')); return; }
-  WBL.forEach(w => { const r = E('div', 'wbrow'), b = E('b', '', (w.icon || '🌐') + ' ' + w.name); b.append(E('small', '', w.url));
-    r.append(b, E('span', 'hint', (w.mode === 'framec' ? 'إطار متوافق' : w.mode === 'frame' ? 'إطار محمي' : 'تصفح آمن') + ((w.scope || []).length ? ' · 🔒 ' + w.scope.length + ' صفحات محددة' : '') + ' · ' + (w.kids.length ? w.kids.join('، ') : 'كل التابعين') + (ME && ME.role === 'owner' && !/^(owner|admin)$/i.test(w.par) ? ' · ' + w.par : '')));
-    const mk = (t, fn) => { const x = E('button', 'btn', t); x.type = 'button'; x.onclick = fn; r.append(x); };
-    mk('👁 معاينة', () => { $('wbmodal').hidden = true; openWeb(w); });
-    mk('✏️ تعديل', () => wbForm(w));
-    mk('🗑 حذف', () => { r.style.opacity = '.45'; r.querySelectorAll('button').forEach(x => x.disabled = true);
-      run('webDel', w.id).then(l => { WBL = l || []; wbDraw(); if (WBEDIT && WBEDIT.id === w.id) wbForm(null); toast('🗑 حُذف «' + w.name + '»'); })
-        .catch(e => { r.style.opacity = ''; r.querySelectorAll('button').forEach(x => x.disabled = false); toast(e.message, true); }); });
-    L.append(r); });
+  const L = $('wblist'), q = ($('wbq').value || '').trim().toLowerCase(); L.innerHTML = ''; $('wbcount').textContent = WBL.length;
+  const list = WBL.filter(w => !q || (w.name + ' ' + w.url).toLowerCase().includes(q));
+  if (!WBL.length) { L.append(E('p', 'hint', 'لا توجد مواقع بعد. اضغط «➕ موقع جديد» وأضف أول موقع.')); return; }
+  if (!list.length) { L.append(E('p', 'hint', 'لا توجد نتائج لهذا البحث.')); return; }
+  const MODES = { frame: '🖼 إطار محمي', framec: '🖼 إطار متوافق', proxy: '🛡 تصفح آمن' };
+  list.forEach(w => { const r = E('div', 'wbitem' + (WBEDIT && WBEDIT.id === w.id ? ' sel' : '')), tx = E('div', 'tx'), tags = E('div', 'tags');
+    tx.append(E('b', '', w.name), E('small', '', w.url));
+    tags.append(E('span', '', MODES[w.mode] || MODES.proxy), E('span', '', w.kids.length ? '👧 ' + w.kids.join('، ') : '👧 كل التابعين'));
+    if ((w.scope || []).length) tags.append(E('span', '', '🔒 ' + w.scope.length + ' صفحات'));
+    if (ME && ME.role === 'owner' && !/^(owner|admin)$/i.test(w.par)) tags.append(E('span', '', '👤 ' + w.par));
+    tx.append(tags);
+    const acts = E('div', 'acts'), mk = (t, title, fn, cls) => { const x = E('button', 'btn' + (cls ? ' ' + cls : ''), t); x.type = 'button'; x.title = title; x.setAttribute('aria-label', title + ' ' + w.name); x.onclick = fn; acts.append(x); };
+    mk('👁', 'معاينة', () => { $('wbmodal').hidden = true; openWeb(w); });
+    mk('✏️', 'تعديل', () => { wbForm(w); wbDraw(); setTimeout(() => { try { $('wbformcard').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('wbname').focus({ preventScroll: true }); } catch (e) {} }, 60); });
+    mk('🗑', 'حذف', () => { r.style.opacity = '.45'; r.querySelectorAll('button').forEach(x => x.disabled = true);
+      run('webDel', w.id).then(l => { WBL = l || []; if (WBEDIT && WBEDIT.id === w.id) wbForm(null); wbDraw(); toast('🗑 حُذف «' + w.name + '»'); })
+        .catch(e => { r.style.opacity = ''; r.querySelectorAll('button').forEach(x => x.disabled = false); toast(e.message, true); }); }, 'del');
+    r.append(E('div', 'ic', w.icon || '🌐'), tx, acts); L.append(r); });
 }
 function wbForm(w) {
-  WBEDIT = w; $('wbft').textContent = w ? 'تعديل «' + w.name + '»' : 'إضافة موقع'; $('wbname').value = w ? w.name : ''; $('wburl').value = w ? w.url : '';
+  WBEDIT = w; $('wbft').textContent = w ? 'تعديل «' + w.name + '»' : 'إضافة موقع جديد'; $('wbfic').textContent = w ? (w.icon || '🌐') : '➕';
+  $('wbformcard').classList.toggle('editing', !!w); $('wbcancel').hidden = !w; $('wbsave').textContent = w ? '💾 حفظ التعديلات' : '➕ إضافة الموقع'; $('wbname').value = w ? w.name : ''; $('wburl').value = w ? w.url : '';
   $('wbmode').value = w ? w.mode : 'frame'; $('wbscope').value = w ? (w.scope || []).join('\n') : ''; wbScW(); $('wbicon').value = w ? (w.icon || '🌐') : '🌐'; $('wbmsg').textContent = ''; $('wbmsg').className = 'hint';
   WBKIDS = new Set(w ? w.kids : []); const bx = $('wbkids'); bx.innerHTML = '';
   if (!KIDS.length) bx.textContent = 'لا يوجد تابعون بعد.'; else KIDS.forEach(k => bx.append(chk(WBKIDS, k.name, k.name, 0)));
   wbIconSync(); wbCredLoad();
 }
 $('webbtn').onclick = wbOpen; $('wbx').innerHTML = ico('x'); $('wbx').onclick = () => { $('wbmodal').hidden = true; };
-$('wbnew').onclick = () => wbForm(null);
+$('wbnew').onclick = () => { wbForm(null); wbDraw(); setTimeout(() => { try { $('wbformcard').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('wbname').focus({ preventScroll: true }); } catch (e) {} }, 60); };
+$('wbcancel').onclick = () => { wbForm(null); wbDraw(); };
+$('wbq').oninput = deb(() => wbDraw(), 150);
+$('wbicon').addEventListener('input', () => { if (WBEDIT || $('wbicon').value.trim()) $('wbfic').textContent = $('wbicon').value.trim() || '➕'; });
 function wbScW() { $('wbscw').hidden = !($('wbmode').value === 'frame' && $('wbscope').value.trim()); }
 $('wbmode').onchange = wbScW; $('wbscope').oninput = wbScW;
 const wbU = () => { const u = $('wburl').value.trim(); if (!/^https?:\/\//i.test(u)) { toast('اكتب رابط الصفحة أولاً', true); return ''; } return u.replace(/#.*$/, ''); };
@@ -4402,7 +4473,7 @@ $('wbprobe').onclick = () => { const u = $('wburl').value.trim(), m = $('wbmsg')
     if (!$('wbname').value.trim()) $('wbname').value = wHost(u).split('.')[0]; }).catch(e => { m.textContent = e.message; m.className = 'hint bad'; }).then(() => { b.disabled = false; }); };
 $('wbsave').onclick = () => { const b = $('wbsave'); b.disabled = true;
   run('webSave', { id: WBEDIT ? WBEDIT.id : '', name: $('wbname').value, url: $('wburl').value.trim(), mode: $('wbmode').value, scope: $('wbscope').value.split('\n').map(x => x.trim()).filter(Boolean), icon: $('wbicon').value.trim(), kids: [...WBKIDS] })
-    .then(l => { WBL = l || []; wbDraw(); wbForm(null); toast('تم الحفظ ✅'); }).catch(e => toast(e.message, true)).then(() => { b.disabled = false; }); };
+    .then(l => { const ed = !!WBEDIT; WBL = l || []; wbForm(null); wbDraw(); toast(ed ? '✅ حُفظت التعديلات' : '✅ أُضيف الموقع'); }).catch(e => toast(e.message, true)).then(() => { b.disabled = false; }); };
 
 /* ================= نسخ حساب تابع إلى حساب رئيسي ================= */
 $('kcpx').innerHTML = ico('x'); $('kcpx').onclick = () => { $('kcpmodal').hidden = true; };
@@ -4421,7 +4492,7 @@ $('kcpgo').onclick = () => { const b = $('kcpgo'), src = $('ksel').value, nm = $
 /* ================= أيقونات المواقع ================= */
 const WB_ICONS = ['🌐', '📘', '📗', '📕', '📙', '📚', '📖', '✏️', '🏫', '🎓', '🧮', '🔢', '➗', '🔤', '🅰️', '🕌', '📿', '🔬', '🧪', '🧬', '🌍', '🗺️', '🔭', '🪐', '🚀', '💡', '🧠', '🧩', '🎨', '🖍️', '🎵', '🎹', '🎬', '📺', '🎮', '🕹️', '⚽', '🏆', '🦁', '🐼', '🐠', '🦋', '🌳', '🌸', '☀️', '🌙', '⭐', '🍎', '🧸', '🎈', '🏠', '❤️'];
 (function () { const bx = $('wbicons'); WB_ICONS.forEach(ic => { const b = E('button', '', ic); b.type = 'button'; b.title = ic; b.onclick = () => { $('wbicon').value = ic; wbIconSync(); }; bx.append(b); }); })();
-function wbIconSync() { const v = $('wbicon').value.trim(); $('wbicons').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.textContent === v)); }
+function wbIconSync() { const v = $('wbicon').value.trim(); if ($('wbfic') && WBEDIT) $('wbfic').textContent = v || '🌐'; $('wbicons').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.textContent === v)); }
 $('wbicon').addEventListener('input', wbIconSync);
 
 /* ================= حافظة كلمات المرور (الإدارة) ================= */
@@ -4711,6 +4782,39 @@ function kuiGet() { let v = ''; try { v = localStorage.getItem(kuiKey()) || ''; 
 function isKS() { return MODE === 'kid' && kuiGet() === 'sticker'; }
 function kuiApply() { const ks = isKS(); document.body.classList.toggle('ks', ks); const b = $('kuibtn'); if (b) { const lab = '🎨 الشكل: ' + (kuiGet() === 'classic' ? 'كلاسيكي' : 'ملصقات'); if (b.querySelector('.ml')) b.querySelector('.ml').textContent = lab; else b.textContent = lab; } }
 $('kuibtn').onclick = () => { const n = kuiGet() === 'classic' ? 'sticker' : 'classic'; try { localStorage.setItem(kuiKey(), n); } catch (e) {} kuiApply(); renderCards(); toast(n === 'classic' ? '🎨 الشكل الكلاسيكي' : '🎨 شكل الملصقات'); };
+
+/* ================= تكبير الموقع (والفيديو فيه) لكامل الشاشة ================= */
+function wbZoom(on) { $('webov').classList.toggle('zoom', on); $('wbunzoom').hidden = !on; if (on) { APPFS_TRIED = true; enterAppFS(); toast('اضغط ⤡ في الزاوية لإظهار الشريط'); } }
+$('wbzoom').onclick = () => wbZoom(true); $('wbunzoom').onclick = () => wbZoom(false);
+
+/* ================= تقديم/رجوع 10 ثوانٍ + سحب دقيق للمقاطع الطويلة ================= */
+const sk10 = d => { if (!cur) return; try { const t2 = cur.time() || 0, du = cur.dur() || 0; cur.seek(Math.max(0, Math.min(du > 0 ? du - 0.5 : 1e9, t2 + d))); osd((d > 0 ? '+' : '−') + Math.abs(d) + ' ث'); } catch (e) {} };
+$('b10').onclick = () => sk10(-10); $('f10').onclick = () => sk10(10);
+/* في المقاطع الطويلة (أكثر من 10 دقائق): السحب نسبي، وكلما رفعت الإصبع أو المؤشر بعيداً عن الشريط صار التحريك أدق (×4 ثم ×10)
+   فيسهل الوصول لثانية محددة. ويظهر تلميح بالوقت أثناء السحب في كل المقاطع */
+(function () {
+  const wrap = seek.parentNode, tip = E('div', 'seektip'); tip.hidden = true; wrap.append(tip);
+  let S = null;
+  const rtl = () => getComputedStyle(seek).direction === 'rtl';
+  const pos = (t, d) => { const f = t / d; return (rtl() ? 1 - f : f) * 100; };
+  const show = (t, d, fine) => { tip.hidden = false; tip.style.left = Math.min(96, Math.max(4, pos(t, d))) + '%';
+    tip.innerHTML = ''; tip.append(fmt(t) + ' / ' + fmt(d)); if (d > 600) tip.append(E('small', '', fine > 1 ? 'دقة ×' + fine : '↑ ارفع إصبعك للدقة')); };
+  const paint = t => { const d = S.d; seek.value = t; setP(seek, t / d * 100); $('tcur').textContent = fmt(t) + ' / ' + fmt(d); $('trem').textContent = '−' + fmt(d - t); };
+  wrap.addEventListener('pointerdown', e => {
+    if (seek.disabled || !cur || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    const d = +seek.max; if (!(d > 0) || !isFinite(d)) return;
+    const r = seek.getBoundingClientRect(); let f = (e.clientX - r.left) / r.width; if (rtl()) f = 1 - f;
+    S = { x: e.clientX, y: e.clientY, w: r.width, d: d, t: Math.max(0, Math.min(d, f * d)), fine: 1 };
+    seeking = true; try { wrap.setPointerCapture(e.pointerId); } catch (x) {} e.preventDefault(); paint(S.t); show(S.t, d, 1);
+  });
+  wrap.addEventListener('pointermove', e => {
+    if (!S) return; const dx = e.clientX - S.x; S.x = e.clientX;
+    const dy = Math.abs(S.y - e.clientY), fine = S.d > 600 ? (dy > 130 ? 10 : dy > 50 ? 4 : 1) : 1; S.fine = fine;
+    S.t = Math.max(0, Math.min(S.d, S.t + (dx / S.w) * S.d / fine * (rtl() ? -1 : 1))); paint(S.t); show(S.t, S.d, fine);
+  });
+  const end = () => { if (!S) return; const t = S.t; S = null; tip.hidden = true; try { if (cur) cur.seek(t); } catch (x) {} seeking = false; setTimeout(() => saveState(true), 400); };
+  wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end); wrap.addEventListener('lostpointercapture', end);
+})();
 vkSync();
 setMode('kid'); setAudio(AUDIO, true); syncVolUI(); fsChanged(); fillAgrp(); setSide('fd'); ccSync();
 /* ---------- بقاء الجلسة عند تحديث الصفحة (يُحفظ التوكن في sessionStorage فقط، ويُمحى بالخروج أو بإغلاق التبويب) ---------- */
