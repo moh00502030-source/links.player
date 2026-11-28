@@ -1128,6 +1128,19 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
   .seektip[hidden] { display: none; } .seektip small { display: block; font-size: 11px; font-weight: 600; opacity: .8; direction: rtl; text-align: center; }
   #player.longclip #seek { height: 10px; } #player.longclip .seekrow { padding-block: 4px; }
 </style>
+<style id="vp-36">
+  .wbpub { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; background: var(--panel); border: 2px solid var(--line); margin-bottom: 10px; cursor: pointer; }
+  .wbpub input { width: 22px; height: 22px; margin-top: 2px; flex: none; } .wbpub b { display: block; } .wbpub small { display: block; color: var(--muted); line-height: 1.6; }
+  .wbpub:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--panel)); }
+  .wbitem .tags span.pub { background: color-mix(in srgb, var(--accent) 16%, var(--panel2)); color: var(--accent); font-weight: 700; }
+</style>
+<style id="vp-37">
+  .lvact .btn.kick { color: #e5484d; border-color: color-mix(in srgb, #e5484d 40%, transparent); }
+  .openbar .ocd { display: block; font-size: 15px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  body.kid.ks .openbar .ocd b { background: var(--k-ink); color: #fff; border-radius: 999px; padding: 1px 10px; margin-inline-start: 4px; direction: ltr; display: inline-block; }
+  .wbpub.alw:has(input:checked) { border-color: #16a34a; background: color-mix(in srgb, #16a34a 8%, var(--panel)); }
+  .wbitem .tags span.alw { background: color-mix(in srgb, #16a34a 16%, var(--panel2)); color: #15803d; font-weight: 700; }
+</style>
 </head>
 <body>
 
@@ -1185,7 +1198,7 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
   <div class="lgin"><span class="lgi">👤</span><input id="klname" type="text" placeholder="اسم المستخدم" autocomplete="username" maxlength="40" autocapitalize="none" autocorrect="off" spellcheck="false" dir="auto"></div>
   <div class="pwrap lgin"><span class="lgi">🔑</span><input id="klpass" type="password" placeholder="كلمة السر" autocomplete="current-password"><button type="button" id="klshow" class="ib" aria-label="إظهار كلمة السر" aria-pressed="false">👁</button></div><div id="klcaps" class="lgcaps" hidden>⇪ زر الأحرف الكبيرة (Caps Lock) مفعّل</div>
   <div class="hint" id="klerr" style="margin:10px 0"></div><button id="klgo" class="btn primary">دخول</button><button id="klvk" class="btn vkt" type="button" aria-pressed="false" title="إظهار / إخفاء لوحة المفاتيح">⌨ لوحة المفاتيح</button><button id="klpar" class="btn" hidden>دخول الحساب الرئيسي</button><button id="klcontact" class="btn" type="button">✉ تواصل مع المدير</button></div></div>
-<div id="lockov" hidden><div class="lb"><div id="lockmsg"></div><div id="lockreq" class="hint" style="margin:10px 0"></div><div id="lockrb"><button class="btn primary" data-rq="15">طلب 15 دقيقة إضافية</button><button class="btn primary" data-rq="30">طلب 30 دقيقة إضافية</button><button class="btn primary" data-rq="10" hidden>طلب 10 دقائق إضافية</button></div><button id="lockopen" class="btn primary" type="button" hidden>📂 المجلدات المفتوحة طوال اليوم</button><button id="lockback" class="btn" hidden>‹ عودة لتسجيل الدخول</button><button id="lockpar" class="btn primary">للحساب الرئيسي</button><button id="lockexit" class="btn">خروج</button></div></div>
+<div id="lockov" hidden><div class="lb"><div id="lockmsg"></div><div id="lockreq" class="hint" style="margin:10px 0"></div><div id="lockrb"><button class="btn primary" data-rq="15">طلب 15 دقيقة إضافية</button><button class="btn primary" data-rq="30">طلب 30 دقيقة إضافية</button><button class="btn primary" data-rq="10" hidden>طلب 10 دقائق إضافية</button></div><button id="lockopen" class="btn primary" type="button" hidden>📂 المتاح طوال اليوم</button><button id="lockback" class="btn" hidden>‹ عودة لتسجيل الدخول</button><button id="lockpar" class="btn primary">للحساب الرئيسي</button><button id="lockexit" class="btn">خروج</button></div></div>
 
 <div id="pmodal" class="modal" hidden><div class="dlg">
   <div class="dh"><h2 id="pt">دخول الحساب الرئيسي</h2><button id="px" class="ib" aria-label="إغلاق"></button></div>
@@ -1515,7 +1528,9 @@ html.tv body.kid.ks #cards .card:focus { transform: translateY(-4px) scale(1.03)
       <div class="wbicrow"><input id="wbicon" type="text" maxlength="4" value="🌐" aria-label="الأيقونة"><div id="wbicons" class="icpick"></div></div>
     </fieldset>
     <fieldset><legend>من يرى هذا الموقع</legend>
-      <div class="hint">اترك الكل بلا تحديد ليظهر لكل التابعين.</div><div id="wbkids" class="wbkids"></div>
+      <label class="wbpub"><input id="wbpub" type="checkbox"><span><b>🌍 موقع عام</b><small>يظهر لكل الحسابات الرئيسية وتابعيهم. اتركه دون تحديد ليبقى خاصاً بحسابك وتابعيك فقط.</small></span></label>
+      <label class="wbpub alw"><input id="wbalw" type="checkbox"><span><b>⏰ متاح في كل الأوقات</b><small>يتصفحه التابع حتى بعد انتهاء مدة المشاهدة، ولا يُحتسب وقته من المدة.</small></span></label>
+      <div class="hint" id="wbkidh">اترك التابعين كلهم بلا تحديد ليظهر لكل تابعيك.</div><div id="wbkids" class="wbkids"></div>
     </fieldset>
     <div class="wbsave"><button id="wbsave" class="btn primary" type="button">💾 حفظ الموقع</button></div>
     <div id="wbcw" class="wbcl" hidden><b>🔑 حافظة كلمات المرور لهذا الموقع</b><div class="hint" style="line-height:1.8">احفظ اسم المستخدم وكلمة المرور لكل تابع (أو لكل التابعين). يفتح الطفل «🔑 الحافظة» من أعلى الموقع ليكتبها أو ينسخها. تُحفظ في إعدادات السكربت ولا تظهر في الشيت.</div><div id="wbclist"></div><div class="row"><select id="wbckid"></select><input id="wbcu" type="text" dir="ltr" autocomplete="off" placeholder="اسم المستخدم"><input id="wbcp" type="password" dir="ltr" autocomplete="new-password" placeholder="كلمة المرور"><button id="wbcsave" class="btn primary" type="button">💾 حفظ</button></div></div>
@@ -1630,7 +1645,7 @@ const fmt = s => { s = Math.max(0, Math.floor(s || 0)); const h = Math.floor(s /
   return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(x).padStart(2, '0'); };
 const durTxt = c => c.dur ? fmt(c.dur) : '--:--';
 const times = n => n === 1 ? 'مرة واحدة' : n === 2 ? 'مرتين' : n <= 10 ? n + ' مرات' : n + ' مرة';
-const WRITE = new Set(['setPlayerUrl', 'livePause', 'getPerms', 'setPerm', 'getActivity', 'webCredList', 'webCredSave', 'webCredDel', 'webCredP', 'myQuota', 'copyKid', 'webList', 'webSave', 'webDel', 'webProbe', 'webFetchP', 'driveDiag', 'srcList', 'srcAdd', 'srcGet', 'srcDel', 'srcAddItems', 'dmInfo', 'setDriveKey', 'testDriveKey', 'driveInfo', 'driveShare', 'liveGet', 'addPlay', 'saveSkips', 'addFav', 'renameFav', 'deleteFav', 'addGroup', 'renameGroup', 'deleteGroup', 'setGroupClips', 'setClipGroups',
+const WRITE = new Set(['liveKick', 'setPlayerUrl', 'livePause', 'getPerms', 'setPerm', 'getActivity', 'webCredList', 'webCredSave', 'webCredDel', 'webCredP', 'myQuota', 'copyKid', 'webList', 'webSave', 'webDel', 'webProbe', 'webFetchP', 'driveDiag', 'srcList', 'srcAdd', 'srcGet', 'srcDel', 'srcAddItems', 'dmInfo', 'setDriveKey', 'testDriveKey', 'driveInfo', 'driveShare', 'liveGet', 'addPlay', 'saveSkips', 'addFav', 'renameFav', 'deleteFav', 'addGroup', 'renameGroup', 'deleteGroup', 'setGroupClips', 'setClipGroups',
   'addClip', 'addClips', 'saveProgress', 'addDriveFolder', 'addYouTubePlaylist', 'previewDriveFolder', 'previewYouTubePlaylist', 'previewYouTubeChannel', 'addYouTubeChannel', 'convertPlaylist', 'clearDeleteMarks', 'getPolicy', 'setPolicy', 'resolveQuota', 'endSessions', 'getData', 'extendTime', 'saveKid', 'deleteKid', 'getKids',
   'getReport', 'toggleLike', 'setGroupStyle', 'setContact', 'logParentWatch', 'renameClip', 'deleteClip', 'deleteClips', 'getRequests', 'resolveRequest', 'reportDur', 'getUsers', 'saveUser', 'deleteUser', 'changeMyPassword',
   'getKidClips', 'setKidClip', 'resetKidClip', 'addComment', 'deleteComment', 'moveGroup', 'deleteGroups', 'moveGroups', 'moveClips', 'setGroupSort', 'fillMeta', 'exportLinks', 'restoreLinks', 'backupNow']);
@@ -3068,15 +3083,16 @@ function renderCards() {
   const sec = (title, tag) => { const t = E('h3', 'sec', title); if (tag) t.append(E('span', '', tag)); const g = E('div', 'grid'); box.append(t, g); return g; };
   const vis = ALL.filter(c => !(KC[c.name] && KC[c.name].x) && (!OPENONLY || isOpenC(c))), fc = applySort(folderContent(PATH, vis, true));
   if (OPENONLY) { const ob = E('div', 'openbar'); const bk = E('button', 'btn', '⏳ رجوع'); bk.type = 'button'; bk.onclick = () => lockKid(ST.msg || 'انتهى وقت المشاهدة.');
-    ob.append(E('span', '', '📂 انتهت مدة المشاهدة. المتاح الآن المجلدات المفتوحة طوال اليوم فقط.'), bk); box.prepend(ob); }
+    const ot = E('span', '', '📂 انتهت مدة المشاهدة. المتاح الآن ما فُتح طوال اليوم فقط.'); ot.append(E('span', 'ocd')); ob.append(ot, bk); box.prepend(ob); nextCd(); }
   if ((PATH.length || !isKS()) && (fc.cl.length > 1 || fc.fo.length > 1)) box.append(sortBarEl(() => renderCards()));
   if (!PATH.length) { const lc = PROG.last && vis.find(x => x.name === PROG.last && canPlay(x));
     if (lc) { const g = sec('⏯ تابع من حيث توقفت'); const ra = resumeAt(lc); g.append(cardEl(lc, () => playKid([lc], 0), { sub: ra ? 'من ' + fmt(ra) : 'آخر مقطع شاهدته', dur: durTxt(lc) })); } }
-  if (!PATH.length && !OPENONLY && WEBS.length) { const g = sec('🌐 مواقع للتصفح'); WEBS.forEach(w => g.append(cardEl({ name: w.name, url: '' }, () => openWeb(w), { folder: true, sub: '🌐 ' + w.host, icon: w.icon || '🌐' }))); }
+  const WV = OPENONLY ? WEBS.filter(w => w.always) : WEBS;
+  if (!PATH.length && WV.length) { const g = sec('🌐 مواقع للتصفح'); WV.forEach(w => g.append(cardEl({ name: w.name, url: '' }, () => openWeb(w), { folder: true, sub: '🌐 ' + w.host, icon: w.icon || '🌐' }))); }
   if (!PATH.length) { const fl = FAVS.filter(f => vis.some(x => x.url === f.url));
     if (fl.length) { const g = sec('⭐ مفضلتي'); fl.forEach(f => g.append(cardEl({ name: f.name, url: f.url }, () => playKidFav(f), { sub: fmt(f.time) }))); } }
-  if (fc.fo.length) { const g = sec('المجلدات'); fc.fo.forEach(f => g.append(cardEl({ name: (f.pl ? '📺 ' : '') + f.label, url: '' }, () => { PATH = PATH.concat([f.name]); renderCards(); }, { folder: true, sub: f.n + ' مقطع', icon: f.icon, color: f.color }))); }
-  if (fc.cl.length) { const g = sec('المقاطع', String(fc.cl.length)); fc.cl.forEach((c, k) => g.append(clipCard(c, () => playKid(fc.cl, k)))); }
+  if (fc.fo.length) { const g = sec('المجلدات'); fc.fo.forEach(f => g.append(cardEl({ name: (f.pl ? '📺 ' : '') + f.label, url: '' }, () => { PATH = PATH.concat([f.name]); renderCards(); }, { folder: true, sub: '', icon: f.icon, color: f.color }))); }
+  if (fc.cl.length) { const g = sec('المقاطع'); fc.cl.forEach((c, k) => g.append(clipCard(c, () => playKid(fc.cl, k)))); }
   if (!fc.fo.length && !fc.cl.length) box.append(E('p', 'hint', 'هذا المجلد فارغ.'));
 }
 function playKid(lst, k) {
@@ -3105,7 +3121,7 @@ function initKid(d) {
   progLoad(d.prog); setLikes(d.likes);
   ALL = (d.clips || []).slice(); GROUPS = d.groups || []; LOCAL = []; FAVS = d.favs || []; KC = d.kc || {}; ALL.forEach(prepSkips);
   PATH = []; PL = ALL.slice(); i = 0; ST = d.status || { ok: true, remaining: null }; GST = d.games || null; updGamesBtn();
-  KOPTS = d.opts || {}; try { kuiApply(); } catch (e) {} IDLE_T0 = Date.now(); idleHide(); OPENG = new Set(d.open || []); OPENONLY = false; WEBS = d.webs || []; closeWeb(true);
+  KICKED = false; KOPTS = d.opts || {}; try { kuiApply(); } catch (e) {} IDLE_T0 = Date.now(); idleHide(); OPENG = new Set(d.open || []); OPENONLY = false; WEBS = d.webs || []; closeWeb(true);
   locked = false; $('lockov').hidden = true; showHome(); if (!ST.ok) lockKid(ST.msg); else if (d.noProfile) showLogin();
 }
 function lockKid(msg) { closeWeb(true); OPENONLY = false; locked = true; closeGames(); stopPlayer(); $('lockmsg').textContent = msg || ''; $('lockov').hidden = false; updLockUI(); }
@@ -3122,7 +3138,7 @@ function applyStatus(s) {
   if (s.relogin) { if ($('klogin').hidden) { KTOKEN = ''; stopPlayer(); document.body.classList.add('home'); updKbar(); showLogin('انتهت الجلسة. ادخل من جديد.'); } return; }
   ST = s; updRem();
   if (s.ok && OPENONLY) { OPENONLY = false; if (document.body.classList.contains('home')) renderCards(); }
-  if (!s.ok && !locked && !OPENONLY) { if (PL[i] && isOpenC(PL[i]) && !document.body.classList.contains('home')) { OPENONLY = true; toast('انتهت مدة المشاهدة، ويمكنك متابعة المجلدات المفتوحة فقط 📂'); } else lockKid(s.msg); }
+  if (!s.ok && !locked && !OPENONLY) { if ((WEBON && WEBON.always) || (PL[i] && isOpenC(PL[i]) && !document.body.classList.contains('home'))) { OPENONLY = true; toast('انتهت مدة المشاهدة، ويمكنك متابعة المجلدات المفتوحة فقط 📂'); } else lockKid(s.msg); }
 }
 function beat() {
   const c = WEBON && !WEBON.pdf ? { name: '🌐 ' + WEBON.name } : PL[i], s = Math.min(pend, 60); pend -= s; if (!c || !s) return;
@@ -3136,7 +3152,7 @@ setInterval(() => {
   if (MODE === 'parent') { pTick(); return; }
   if (locked || HOLD || (!WEBON && ((document.body.classList.contains('home') && !document.body.classList.contains('pmini')) || !playingNow()))) return;
   pend += dt;
-  if ((!WEBON || WEBON.pdf) && (OPENONLY || (PL[i] && isOpenC(PL[i])))) { let bo = 0; while (pend >= 30 && bo++ < 4) beat(); return; }   // مجلد مفتوح طوال اليوم: لا يُنقص المدة
+  if ((WEBON && WEBON.always) || ((!WEBON || WEBON.pdf) && (OPENONLY || (PL[i] && isOpenC(PL[i]))))) { let bo = 0; while (pend >= 30 && bo++ < 4) beat(); return; }   // مجلد مفتوح طوال اليوم: لا يُنقص المدة
   if (ST.remaining != null && (ST.remaining -= dt) <= 0) {
     pend = Math.min(pend, 60); beat(); ST.canReq = true; lockKid('انتهى وقت المشاهدة في هذه الفترة. أحسنت! 🌟');
     run('getKidStatus', KID).then(s => { if (!s.relogin && !s.ok) { ST = s; $('lockmsg').textContent = s.msg; updLockUI(); } }).catch(() => {}); return;
@@ -3147,7 +3163,7 @@ setInterval(() => {
 let pollN = 0;
 setInterval(() => {   // يفتح القفل تلقائياً عند التمديد أو بدء فترة جديدة (كل 15 ثانية أثناء القفل، وإلا كل دقيقة)
   pollN++; if (MODE !== 'kid' || !$('klogin').hidden || (!locked && !OPENONLY && pollN % 4)) return;
-  run('getKidStatus', KID).then(s => { if (s.ok && locked && DATA.hasPw) { locked = false; $('lockov').hidden = true; ST = s; showHome(); if (s.remaining) toast('🎉 تمت الموافقة! لديك ' + Math.ceil(s.remaining / 60) + ' دقيقة إضافية'); } else { applyStatus(s); if (locked && !s.relogin) { ST = s; updLockUI(); } } }).catch(() => {});
+  run('getKidStatus', KID).then(s => { if (s.ok && locked && DATA.hasPw && !KICKED) { locked = false; $('lockov').hidden = true; ST = s; showHome(); if (s.remaining) toast('🎉 تمت الموافقة! لديك ' + Math.ceil(s.remaining / 60) + ' دقيقة إضافية'); } else { applyStatus(s); if (locked && !s.relogin) { ST = s; updLockUI(); } } }).catch(() => {});
 }, 15000);
 ['pointerdown', 'pointermove', 'keydown', 'touchstart', 'wheel'].forEach(ev => document.addEventListener(ev, () => { lastAct = Date.now(); }, { capture: true, passive: true }));
 /* خروج تلقائي: إذا توقّف التشغيل ولم يكن هناك أي نشاط لمدة دقيقتين → حفظ آخر مقطع وموضعه ثم خروج.
@@ -3945,7 +3961,7 @@ setInterval(() => {
   if (LIVE_OFF) return; const s = liveState(); if (!s) { liveSig = ''; return; }
   s.dv = devName; const sig = [s.s, s.c, s.g, s.gm].join('|'), now = Date.now();
   if (sig === liveSig && now - liveAt < (HOLD ? 4000 : 8000)) return; liveSig = sig; liveAt = now;
-  run('livePing', KID, s).then(r => setHold(!!(r && r.hold))).catch(e => { if (/not a function|Script function not found|غير متاح/i.test(e.message)) LIVE_OFF = true; });
+  run('livePing', KID, s).then(r => { if (r && r.kick) return kidKicked(); setHold(!!(r && r.hold)); }).catch(e => { if (/not a function|Script function not found|غير متاح/i.test(e.message)) LIVE_OFF = true; });
 }, 4000);
 /** الحساب الرئيسي: لوحة «الآن» */
 const agoTxt = ms => { const m = Math.round(ms / 60000); return m < 1 ? 'منذ لحظات' : m < 60 ? 'منذ ' + m + ' دقيقة' : m < 1440 ? 'منذ ' + Math.round(m / 60) + ' ساعة' : 'منذ أكثر من يوم'; };
@@ -3994,6 +4010,9 @@ function drawLive() {
     hb.title = k.hold ? 'يعود التابع لما كان عليه' : 'يتوقف ما يشاهده أو يلعبه التابع وتظهر له رسالة حتى تستأنف';
     hb.onclick = () => { hb.disabled = true; run('livePause', k.name, !k.hold).then(dd => { LVD = dd; LVR = Date.now(); drawLive(); toast(k.hold ? '▶ سيُستأنف لـ ' + k.name + ' خلال ثوانٍ' : '⏸ سيتوقف ' + k.name + ' خلال ثوانٍ'); }).catch(er => { hb.disabled = false; toast(/not found|not a function|غير موجود/i.test(er.message) ? 'ملف Code.gs قديم: استبدله بالنسخة الأخيرة ثم انشر إصداراً جديداً' : er.message, true); }); };
     ac.prepend(hb);
+    if (onl) { const kb = E('button', 'btn kick', '🚪 تسجيل خروج'); kb.type = 'button'; kb.title = 'يُنهي جلسة ' + k.name + ' على جهازه ويحفظ موضع المقطع';
+      kb.onclick = () => { kb.disabled = true; run('liveKick', k.name).then(dd => { LVD = dd; LVR = Date.now(); drawLive(); toast('🚪 سيُسجَّل خروج ' + k.name + ' خلال ثوانٍ'); }).catch(er => { kb.disabled = false; toast(/not found|not a function/i.test(er.message) ? 'ملف Code.gs قديم: استبدله بالنسخة الأخيرة ثم انشر' : er.message, true); }); };
+      ac.append(kb); }
     ac.append(ex, rp); card.append(ac); box.append(card);
   });
 }
@@ -4261,7 +4280,7 @@ $('pexit').onclick = exitClip;
 /* ================= مجلدات مفتوحة طوال اليوم + احتساب المشاهدة بعد 10 ثوانٍ ================= */
 let OPENG = new Set(), OPENONLY = false, W10 = 0, FIN10 = false, ADNOW = false;
 const isOpenC = c => !!c && !c.local && (c.groups || []).some(g => OPENG.has(g));
-const hasOpen = () => MODE === 'kid' && OPENG.size > 0 && ALL.some(c => isOpenC(c) && !(KC[c.name] && KC[c.name].x));
+const hasOpen = () => MODE === 'kid' && ((OPENG.size > 0 && ALL.some(c => isOpenC(c) && !(KC[c.name] && KC[c.name].x))) || WEBS.some(w => w.always));
 $('lockopen').onclick = () => { if (!hasOpen()) return; locked = false; OPENONLY = true; $('lockov').hidden = true; PATH = []; showHome(); };
 setInterval(() => {   // لا تُحتسب المشاهدة عند الضغط، بل بعد 10 ثوانٍ من التشغيل الفعلي (دون وقت الإعلان)
   if ((counted && !FIN10) || !PL[i] || !LOADED && !PL[i].local) return;
@@ -4295,7 +4314,7 @@ function pdfOv(v, name) {
   $('wbbody').innerHTML = ''; $('wbbody').append(v); $('webov').hidden = false; updRem(); wbFsUpd();
 }
 function openWeb(w) {
-  if (MODE === 'kid' && (locked || ST.ok === false)) return toast('انتهى وقت المشاهدة', true);
+  if (MODE === 'kid' && !w.always && (locked || ST.ok === false)) return toast('انتهى وقت المشاهدة', true);
   stopPlayer(); wbPanelsReset(); WEBON = w; WEBH = []; WEBCUR = ''; $('wbt').textContent = (w.icon || '🌐') + ' ' + w.name; $('webov').hidden = false; updRem();
   $('wbback').hidden = /^frame/.test(w.mode); $('wbhome').title = 'الصفحة الرئيسية للموقع'; wbFsUpd(); $('wbkey').hidden = MODE === 'kid' ? !w.cred : false; $('wbkb').hidden = false; $('wbrel').hidden = false; $('wbfullp').hidden = !(IN_SITES && !DATA.kiosk && /^frame/.test(w.mode));
   if (/^frame/.test(w.mode)) webFrame(); else webGo(w.url, false);
@@ -4436,14 +4455,16 @@ function wbDraw() {
   const MODES = { frame: '🖼 إطار محمي', framec: '🖼 إطار متوافق', proxy: '🛡 تصفح آمن' };
   list.forEach(w => { const r = E('div', 'wbitem' + (WBEDIT && WBEDIT.id === w.id ? ' sel' : '')), tx = E('div', 'tx'), tags = E('div', 'tags');
     tx.append(E('b', '', w.name), E('small', '', w.url));
-    tags.append(E('span', '', MODES[w.mode] || MODES.proxy), E('span', '', w.kids.length ? '👧 ' + w.kids.join('، ') : '👧 كل التابعين'));
+    const mine = w.mine !== false;
+    tags.append(E('span', 'pub', w.pub ? (mine ? '🌍 عام' : '🌍 عام من ' + (/^(owner|admin)$/i.test(w.par) ? 'المدير' : w.par)) : '🔒 خاص'), E('span', '', MODES[w.mode] || MODES.proxy), E('span', '', w.kids.length ? '👧 ' + w.kids.join('، ') : '👧 كل التابعين'));
+    if (w.always) tags.append(E('span', 'alw', '⏰ كل الأوقات'));
     if ((w.scope || []).length) tags.append(E('span', '', '🔒 ' + w.scope.length + ' صفحات'));
-    if (ME && ME.role === 'owner' && !/^(owner|admin)$/i.test(w.par)) tags.append(E('span', '', '👤 ' + w.par));
+    if (mine && ME && ME.role === 'owner' && !/^(owner|admin)$/i.test(w.par)) tags.append(E('span', '', '👤 ' + w.par));
     tx.append(tags);
     const acts = E('div', 'acts'), mk = (t, title, fn, cls) => { const x = E('button', 'btn' + (cls ? ' ' + cls : ''), t); x.type = 'button'; x.title = title; x.setAttribute('aria-label', title + ' ' + w.name); x.onclick = fn; acts.append(x); };
     mk('👁', 'معاينة', () => { $('wbmodal').hidden = true; openWeb(w); });
-    mk('✏️', 'تعديل', () => { wbForm(w); wbDraw(); setTimeout(() => { try { $('wbformcard').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('wbname').focus({ preventScroll: true }); } catch (e) {} }, 60); });
-    mk('🗑', 'حذف', () => { r.style.opacity = '.45'; r.querySelectorAll('button').forEach(x => x.disabled = true);
+    if (mine) mk('✏️', 'تعديل', () => { wbForm(w); wbDraw(); setTimeout(() => { try { $('wbformcard').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('wbname').focus({ preventScroll: true }); } catch (e) {} }, 60); });
+    if (mine) mk('🗑', 'حذف', () => { r.style.opacity = '.45'; r.querySelectorAll('button').forEach(x => x.disabled = true);
       run('webDel', w.id).then(l => { WBL = l || []; if (WBEDIT && WBEDIT.id === w.id) wbForm(null); wbDraw(); toast('🗑 حُذف «' + w.name + '»'); })
         .catch(e => { r.style.opacity = ''; r.querySelectorAll('button').forEach(x => x.disabled = false); toast(e.message, true); }); }, 'del');
     r.append(E('div', 'ic', w.icon || '🌐'), tx, acts); L.append(r); });
@@ -4452,6 +4473,7 @@ function wbForm(w) {
   WBEDIT = w; $('wbft').textContent = w ? 'تعديل «' + w.name + '»' : 'إضافة موقع جديد'; $('wbfic').textContent = w ? (w.icon || '🌐') : '➕';
   $('wbformcard').classList.toggle('editing', !!w); $('wbcancel').hidden = !w; $('wbsave').textContent = w ? '💾 حفظ التعديلات' : '➕ إضافة الموقع'; $('wbname').value = w ? w.name : ''; $('wburl').value = w ? w.url : '';
   $('wbmode').value = w ? w.mode : 'frame'; $('wbscope').value = w ? (w.scope || []).join('\n') : ''; wbScW(); $('wbicon').value = w ? (w.icon || '🌐') : '🌐'; $('wbmsg').textContent = ''; $('wbmsg').className = 'hint';
+  $('wbpub').checked = w ? !!w.pub : !!(ME && ME.role === 'owner'); $('wbalw').checked = !!(w && w.always); wbPubHint();
   WBKIDS = new Set(w ? w.kids : []); const bx = $('wbkids'); bx.innerHTML = '';
   if (!KIDS.length) bx.textContent = 'لا يوجد تابعون بعد.'; else KIDS.forEach(k => bx.append(chk(WBKIDS, k.name, k.name, 0)));
   wbIconSync(); wbCredLoad();
@@ -4459,6 +4481,8 @@ function wbForm(w) {
 $('webbtn').onclick = wbOpen; $('wbx').innerHTML = ico('x'); $('wbx').onclick = () => { $('wbmodal').hidden = true; };
 $('wbnew').onclick = () => { wbForm(null); wbDraw(); setTimeout(() => { try { $('wbformcard').scrollIntoView({ behavior: 'smooth', block: 'start' }); $('wbname').focus({ preventScroll: true }); } catch (e) {} }, 60); };
 $('wbcancel').onclick = () => { wbForm(null); wbDraw(); };
+function wbPubHint() { $('wbkidh').textContent = $('wbpub').checked ? 'اترك التابعين كلهم بلا تحديد ليظهر لكل التابعين في كل الحسابات، أو حدّد تابعين بأعينهم.' : 'اترك التابعين كلهم بلا تحديد ليظهر لكل تابعيك.'; }
+$('wbpub').onchange = wbPubHint;
 $('wbq').oninput = deb(() => wbDraw(), 150);
 $('wbicon').addEventListener('input', () => { if (WBEDIT || $('wbicon').value.trim()) $('wbfic').textContent = $('wbicon').value.trim() || '➕'; });
 function wbScW() { $('wbscw').hidden = !($('wbmode').value === 'frame' && $('wbscope').value.trim()); }
@@ -4472,7 +4496,7 @@ $('wbprobe').onclick = () => { const u = $('wburl').value.trim(), m = $('wbmsg')
   run('webProbe', u).then(r => { m.textContent = r.msg; m.className = 'hint ' + (r.proxyOk ? 'ok' : r.ok ? 'warn' : 'bad'); if (r.mode) $('wbmode').value = r.mode;
     if (!$('wbname').value.trim()) $('wbname').value = wHost(u).split('.')[0]; }).catch(e => { m.textContent = e.message; m.className = 'hint bad'; }).then(() => { b.disabled = false; }); };
 $('wbsave').onclick = () => { const b = $('wbsave'); b.disabled = true;
-  run('webSave', { id: WBEDIT ? WBEDIT.id : '', name: $('wbname').value, url: $('wburl').value.trim(), mode: $('wbmode').value, scope: $('wbscope').value.split('\n').map(x => x.trim()).filter(Boolean), icon: $('wbicon').value.trim(), kids: [...WBKIDS] })
+  run('webSave', { id: WBEDIT ? WBEDIT.id : '', name: $('wbname').value, url: $('wburl').value.trim(), mode: $('wbmode').value, pub: $('wbpub').checked, always: $('wbalw').checked, scope: $('wbscope').value.split('\n').map(x => x.trim()).filter(Boolean), icon: $('wbicon').value.trim(), kids: [...WBKIDS] })
     .then(l => { const ed = !!WBEDIT; WBL = l || []; wbForm(null); wbDraw(); toast(ed ? '✅ حُفظت التعديلات' : '✅ أُضيف الموقع'); }).catch(e => toast(e.message, true)).then(() => { b.disabled = false; }); };
 
 /* ================= نسخ حساب تابع إلى حساب رئيسي ================= */
@@ -4815,6 +4839,28 @@ $('b10').onclick = () => sk10(-10); $('f10').onclick = () => sk10(10);
   const end = () => { if (!S) return; const t = S.t; S = null; tip.hidden = true; try { if (cur) cur.seek(t); } catch (x) {} seeking = false; setTimeout(() => saveState(true), 400); };
   wrap.addEventListener('pointerup', end); wrap.addEventListener('pointercancel', end); wrap.addEventListener('lostpointercapture', end);
 })();
+
+/* ================= خروج التابع بأمر من الحساب الرئيسي ================= */
+var KICKED = false;
+function kidKicked() {
+  if (MODE !== 'kid') return;
+  try { setHold(false); } catch (e) {} try { idleHide(); } catch (e) {} try { closeGames(); } catch (e) {} try { closeWeb(true); } catch (e) {}
+  if (pend >= 5) beat(); saveProg(true); stopPlayer();
+  if (DATA.kiosk) return doExit();
+  if (KTOKEN) { const kt = KTOKEN; run('kidLogout', kt).catch(() => {}); KTOKEN = ''; ALL = []; PL = []; renderCards(); document.body.classList.add('home'); updKbar(); exitAppFS(); showLogin('👋 سجّل حسابك الرئيسي خروجك'); return; }
+  KICKED = true; lockKid('👋 أنهى حسابك الرئيسي الجلسة. إلى اللقاء!');
+}
+/* ================= عدّاد تنازلي لبدء الفترة التالية (داخل ما فُتح طوال اليوم) ================= */
+var NCD_POLL = 0;
+function nextLeft() { const n = ST && ST.next; if (!n || !(n.secs >= 0)) return null; if (!ST._t) ST._t = Date.now(); return Math.max(0, Math.round(n.secs - (Date.now() - ST._t) / 1000)); }
+function nextCd() {
+  const el = document.querySelector('#cards .openbar .ocd'); if (!el) return; const L = nextLeft(), n = ST && ST.next;
+  if (L == null) { el.textContent = ''; return; }
+  const h = Math.floor(L / 3600), m = Math.floor(L % 3600 / 60), s2 = L % 60, t = (h ? h + ':' + ('0' + m).slice(-2) : m) + ':' + ('0' + s2).slice(-2);
+  el.innerHTML = ''; if (L > 0) { el.append('⏳ الفترة التالية ' + (n.tomorrow ? 'غداً ' : '') + 'الساعة ' + n.at + ' — بعد'); el.append(E('b', '', t)); }
+  else { el.textContent = '🎉 حان وقت الفترة التالية…'; if (Date.now() - NCD_POLL > 10000) { NCD_POLL = Date.now(); run('getKidStatus', KID).then(applyStatus).catch(() => {}); } }
+}
+setInterval(() => { if (MODE === 'kid' && OPENONLY) nextCd(); }, 1000);
 vkSync();
 setMode('kid'); setAudio(AUDIO, true); syncVolUI(); fsChanged(); fillAgrp(); setSide('fd'); ccSync();
 /* ---------- بقاء الجلسة عند تحديث الصفحة (يُحفظ التوكن في sessionStorage فقط، ويُمحى بالخروج أو بإغلاق التبويب) ---------- */
